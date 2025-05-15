@@ -1,0 +1,40 @@
+@page
+@model snipsvault.Pages.Snippets.CreateModel
+@{
+    ViewData["Title"] = "Add Snippet";
+}
+
+<h1>Add Snippet</h1>
+
+<form method="post">
+    <div>
+        <label asp-for="Snippet.Title"></label>
+        <input asp-for="Snippet.Title" />
+        <span asp-validation-for="Snippet.Title" class="text-danger"></span>
+
+    </div>
+    <div>
+        <label asp-for="Snippet.Language"></label>
+        <input asp-for="Snippet.Language" />
+        <span asp-validation-for="Snippet.Language"></span>
+    </div>
+    <div>
+        <label asp-for="Snippet.Tags"></label>
+        <input asp-for="Snippet.Tags" />
+    </div>
+    <div>
+        <label asp-for="Snippet.Description"></label>
+        <textarea asp-for="Snippet.Description"></textarea>
+    </div>
+    <div>
+        <label asp-for="Snippet.Code"></label>
+        <textarea asp-for="Snippet.Code"></textarea>
+        <span asp-validation-for="Snippet.Code"></span>
+    </div>
+    <button type="submit">Save</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

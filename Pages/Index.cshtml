@@ -1,0 +1,45 @@
+﻿@page
+@model snipsvault.Pages.IndexModel
+@namespace snipsvault.Pages
+@{
+    ViewData["Title"] = "Snippets List";
+}
+
+<a href="/Snippets/Create">Add a Code Snippet</a>
+
+<h1>Snippets List</h1>
+
+@if (Model.Snippets == null || !Model.Snippets.Any())
+{
+    <p>No snippet available.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Langage</th>
+                <th>Tags</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var snippet in Model.Snippets)
+        {
+            <tr>
+                <td>@snippet.Title</td>
+                <td>@snippet.Language</td>
+                <td>@snippet.Tags</td>
+                <td>@snippet.Description</td>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@snippet.Id">Details</a> |
+                    <a asp-page="./Edit" asp-route-id="@snippet.Id">Edit</a> |
+                    <a asp-page="./Delete" asp-route-id="@snippet.Id">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
